@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 1: Primitive type Property Example -->
+	<bean id="stu" class="com.nc.beans.Student">
+		<constructor-arg name="id" value="1"></constructor-arg>
+		<constructor-arg name="name" value="NC"></constructor-arg>
+		<property name="id" value="1" />
+		<property name="name" value="Nandish" />
+	</bean>
+
+	<bean id="mrk" class="com.nc.beans.Marks">
+		<property name="math" value="91" />
+		<property name="sci" value="92" />
+		<property name="soc" value="93" />
+	</bean>
+
+	<!-- 2: Reference type Property Example -->
+	<bean id="stmr" class="com.nc.beans.StuMark">
+		<constructor-arg name="student">
+			<ref bean="stu" />
+		</constructor-arg>
+		<constructor-arg name="marks">
+			<ref bean="mrk"></ref>
+		</constructor-arg>
+	</bean>
+
+	<!-- 3: Array type Property Example -->
+	<bean id="armk" class="com.nc.beans.ArrayMarks">
+		<constructor-arg name="ekh">
+			<array value-type="java.lang.String">
+				<value>35</value>
+				<value>40</value>
+				<value>45</value>
+			</array>
+		</constructor-arg>
+		<constructor-arg name="sms">
+			<array>
+				<value>98</value>
+				<value>99</value>
+				<value>100</value>
+			</array>
+		</constructor-arg>
+	</bean>
+
+	<!-- 4: Collection type Property Example -->
+	<bean id="stco" class="com.nc.beans.StudentCollection">
+		<property name="studentList">
+			<list>
+				<value>Nandish</value>
+				<value>Dharsh</value>
+				<value>Sushanth</value>
+			</list>
+		</property>
+		<property name="studentSet">
+			<set>
+				<value>Ashik</value>
+				<value>Lokesh</value>
+				<value>Supriya</value>
+			</set>
+		</property>
+		<property name="studentMap">
+			<map>
+				<entry key="1" value="Nandish" />
+				<entry key="2" value="Dharsh" />
+				<entry key="3" value="Sushanth" />
+				<entry key="4" value="Supriya" />
+				<entry key="5" value="Lokesh" />
+				<entry key="6" value="Ashik" />
+			</map>
+		</property>
+	</bean>
+
+</beans>
